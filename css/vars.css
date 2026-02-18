@@ -1,6 +1,6 @@
 :root {
     --main-font-family: 'Roboto', sans-serif;
     --main-font-size: 20px;
-    --container-width: 1170px;
+    --container-width: 1200px;
     /* 370*3 + 30*2 = 1170 */
 }
