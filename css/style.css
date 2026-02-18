@@ -36,7 +36,7 @@ body {
 .title_2 {
     text-align: center;
     /* Центрує текст */
-    margin-bottom: 40px;
+    margin-bottom: 80px;
     /* Додає відступ до галереї */
     text-transform: uppercase;
     /* Робить усі літери великими (опціонально) */
@@ -63,7 +63,7 @@ body {
     grid-template-columns: repeat(3, 370px);
     grid-auto-rows: 370px;
     gap: 30px;
-    padding-bottom: 50px;
+    padding-bottom: 120px;
 }
 
 /* Семантичний figure */
