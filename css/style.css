@@ -111,6 +111,32 @@ body {
     font-weight: 700;
 }
 
+/* Контейнер поверх фото */
+.gal__item .like-container {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 5;
+}
+
+/* Стиль кнопки */
+button.like-btn.like-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: #ffffff66;
+    backdrop-filter: blur(4px);
+    border: 1px solid #ffffff4d;
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+button.like-btn.like-btn:hover {
+    background: #ffffff99;
+}
+
 /* --- АДАПТИВНІСТЬ --- */
 
 /* 1. Планшети (до 1200px) */
