@@ -117,24 +117,49 @@ body {
     top: 15px;
     left: 15px;
     z-index: 5;
+    line-height: 0;
+    /* Додаємо, щоб кнопка не мала зайвих відступів знизу */
 }
 
 /* Стиль кнопки */
 button.like-btn.like-btn {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 7px;
     background: #ffffff66;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(5px);
     border: 1px solid #ffffff4d;
-    padding: 5px 10px;
-    border-radius: 10px;
+    padding: 6px 12px;
+    border-radius: 20px;
     cursor: pointer;
     font-family: inherit;
+    font-weight: 700;
+    font-size: 14px;
+    color: #333;
+    transition: all 0.2s ease;
+    outline: none;
+    /* Прибираємо стандартну рамку фокусу */
 }
 
+/* Ефект при наведенні */
 button.like-btn.like-btn:hover {
-    background: #ffffff99;
+    background: rgba(255, 255, 255, 0.7);
+    transform: scale(1.05);
+    /* Кнопка трохи збільшується при наведенні */
+}
+
+/* Стан, коли кнопка заблокована (після того як лайкнули) */
+button.like-btn:disabled,
+button.like-btn[style*="pointer-events: none"] {
+    cursor: default;
+    background: rgba(255, 255, 255, 0.6);
+    transform: none;
+}
+
+/* Стиль для іконки серця всередині */
+.heart-icon {
+    font-size: 16px;
+    line-height: 1;
 }
 
 /* --- АДАПТИВНІСТЬ --- */
