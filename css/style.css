@@ -111,7 +111,7 @@ body {
     font-weight: 700;
 }
 
-/* Контейнер для кнопки поверх фото */
+/* Контейнер для кнопок поверх фото */
 .gal__item .like-container {
     position: absolute;
     top: 15px;
@@ -119,9 +119,16 @@ body {
     z-index: 5;
 }
 
-/* Сама кнопка лайка. 
-   Використання подвійного класу .like-btn.like-btn підвищує вагу селектора */
-button.like-btn.like-btn {
+.gal__item .download-container {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 5;
+}
+
+/* Спільний стиль для кнопок лайка та завантаження */
+button.like-btn.like-btn,
+a.download-btn.download-btn {
     display: flex;
     align-items: center;
     gap: 5px;
@@ -132,24 +139,36 @@ button.like-btn.like-btn {
     cursor: pointer;
     font-family: inherit;
     font-size: 14px;
+    text-decoration: none;
+    color: #000;
+}
+
+/* Зміна порядку ТІЛЬКИ для кнопки завантаження: число зліва, іконка справа */
+a.download-btn.download-btn {
+    flex-direction: row-reverse;
 }
 
 /* Ефект при наведенні */
-button.like-btn.like-btn:hover {
+button.like-btn.like-btn:hover,
+a.download-btn.download-btn:hover {
     background: #ffffffa4;
 }
 
-/* Стан, коли лайк уже натиснуто.
-   Додаємо .active до ланцюжка класів. Оскільки цей селектор 
-   довший (button.like-btn.like-btn.active), він переб'є звичайний фон */
-button.like-btn.like-btn.active {
+/* Стан натиснутої кнопки */
+button.like-btn.like-btn.active,
+a.download-btn.download-btn.active {
     background: #ffffff3a;
     border-color: #8f8989b2;
     cursor: default;
 }
 
-/* Розмір сердечка */
-.heart-icon {
+/* Специфічний колір рамки для завантаження при кліку */
+a.download-btn.download-btn:active {
+    border-color: #007bff;
+}
+
+.heart-icon,
+.download-icon {
     font-size: 16px;
 }
 
