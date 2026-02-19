@@ -29,53 +29,32 @@ body {
 .title {
     font-family: "Delius Unicase", cursive;
     font-weight: 400;
-    font-style: normal;
     margin-bottom: 20px;
 }
 
 .title_2 {
     text-align: center;
-    /* Центрує текст */
-    margin-bottom: 80px;
-    /* Додає відступ до галереї */
+    margin-bottom: 40px;
     text-transform: uppercase;
-    /* Робить усі літери великими (опціонально) */
     font-size: 32px;
-    /* Налаштування розміру */
     width: 100%;
-    /* Гарантує, що блок займає всю ширину контейнера */
 }
 
-/* Layout */
-.grid-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
-    grid-template-areas:
-        "header"
-        "main";
-}
-
-/* Gallery Grid Logic */
+/* 3. Сітка галереї */
 .gallery {
     display: grid;
-    /* 3 колонки по 370px + 2 gaps по 30px = 1170px */
     grid-template-columns: repeat(3, 370px);
     grid-auto-rows: 370px;
     gap: 30px;
-    padding-bottom: 120px;
+    padding-bottom: 50px;
 }
 
-/* Семантичний figure */
 .gal__item {
     position: relative;
     overflow: hidden;
     border-radius: 20px;
-    margin: 0;
-    /* Скидаємо дефолтні margin figure */
 }
 
-/* Масштабування для 770px (370 + 30 + 370) */
 .gal__item_col-2 {
     grid-column: span 2;
 }
@@ -84,34 +63,24 @@ body {
     grid-row: span 2;
 }
 
-/* Стилізація зображення - ГАРАНТІЯ РОЗМІРУ */
+/* 4. Фото та ефекти */
 .gal__img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Фото заповнює площину без деформації */
     display: block;
+    opacity: 0.9;
+    filter: brightness(0.8) grayscale(10%);
+    transition: all 0.4s ease;
 }
 
-/* Підпис з використанням Flexbox */
-.gal__title {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background: #00000033;
-    color: #fff;
-    width: 100%;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.gal__item:hover .gal__img {
+    opacity: 1;
+    filter: brightness(1) grayscale(0%);
+    transform: scale(1.03);
 }
 
-.gal__author {
-    font-weight: 700;
-}
-
-/* Контейнер для кнопок поверх фото */
+/* 5. Контейнери кнопок (позиціонування) */
 .gal__item .like-container {
     position: absolute;
     top: 15px;
@@ -126,35 +95,51 @@ body {
     z-index: 5;
 }
 
-/* Спільний стиль для кнопок лайка та завантаження */
+/* Приховування кнопок до наведення */
+.gal__item .like-container,
+.gal__item .download-container {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.gal__item:hover .like-container,
+.gal__item:hover .download-container {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Стиль кнопок */
 button.like-btn.like-btn,
 a.download-btn.download-btn {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 8px;
+    /* Оптимальний відступ */
     background: #ffffff81;
     border: 1px solid #ccccccc9;
-    padding: 5px 10px;
-    border-radius: 5px;
+    padding: 6px 12px;
+    /* Зручний розмір */
+    border-radius: 8px;
     cursor: pointer;
     font-family: inherit;
     font-size: 14px;
     text-decoration: none;
     color: #000;
+    transition: background 0.2s ease;
 }
 
-/* Зміна порядку ТІЛЬКИ для кнопки завантаження: число зліва, іконка справа */
+/* Зміна порядку ТІЛЬКИ для завантаження: число зліва */
 a.download-btn.download-btn {
     flex-direction: row-reverse;
 }
 
-/* Ефект при наведенні */
+/* Ефекти наведення та натискання */
 button.like-btn.like-btn:hover,
 a.download-btn.download-btn:hover {
     background: #ffffffa4;
 }
 
-/* Стан натиснутої кнопки */
 button.like-btn.like-btn.active,
 a.download-btn.download-btn.active {
     background: #ffffff3a;
@@ -162,14 +147,41 @@ a.download-btn.download-btn.active {
     cursor: default;
 }
 
-/* Специфічний колір рамки для завантаження при кліку */
+/* Синя рамка при натисканні на завантаження */
 a.download-btn.download-btn:active {
     border-color: #007bff;
 }
 
+/* Іконки */
 .heart-icon,
 .download-icon {
     font-size: 16px;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.like-btn.active .heart-icon,
+.download-btn.active .download-icon {
+    filter: grayscale(0%);
+}
+
+/* Підпис (figcaption) - ЗАВЖДИ ВИДИМИЙ */
+.gal__title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #00000044;
+    color: #fff;
+    width: 100%;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 4;
+}
+
+.gal__author {
+    font-weight: 700;
 }
 
 /* --- АДАПТИВНІСТЬ --- */
