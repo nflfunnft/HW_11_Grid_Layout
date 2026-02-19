@@ -111,55 +111,46 @@ body {
     font-weight: 700;
 }
 
-/* Контейнер поверх фото */
+/* Контейнер для кнопки поверх фото */
 .gal__item .like-container {
     position: absolute;
     top: 15px;
     left: 15px;
     z-index: 5;
-    line-height: 0;
-    /* Додаємо, щоб кнопка не мала зайвих відступів знизу */
 }
 
-/* Стиль кнопки */
+/* Сама кнопка лайка. 
+   Використання подвійного класу .like-btn.like-btn підвищує вагу селектора */
 button.like-btn.like-btn {
     display: flex;
     align-items: center;
-    gap: 7px;
-    background: #ffffff66;
-    backdrop-filter: blur(5px);
-    border: 1px solid #ffffff4d;
-    padding: 6px 12px;
-    border-radius: 20px;
+    gap: 5px;
+    background: #ffffff81;
+    border: 1px solid #ccccccc9;
+    padding: 5px 10px;
+    border-radius: 5px;
     cursor: pointer;
     font-family: inherit;
-    font-weight: 700;
     font-size: 14px;
-    color: #333;
-    transition: all 0.2s ease;
-    outline: none;
-    /* Прибираємо стандартну рамку фокусу */
 }
 
 /* Ефект при наведенні */
 button.like-btn.like-btn:hover {
-    background: rgba(255, 255, 255, 0.7);
-    transform: scale(1.05);
-    /* Кнопка трохи збільшується при наведенні */
+    background: #ffffffa4;
 }
 
-/* Стан, коли кнопка заблокована (після того як лайкнули) */
-button.like-btn:disabled,
-button.like-btn[style*="pointer-events: none"] {
+/* Стан, коли лайк уже натиснуто.
+   Додаємо .active до ланцюжка класів. Оскільки цей селектор 
+   довший (button.like-btn.like-btn.active), він переб'є звичайний фон */
+button.like-btn.like-btn.active {
+    background: #ffffff3a;
+    border-color: #8f8989b2;
     cursor: default;
-    background: rgba(255, 255, 255, 0.6);
-    transform: none;
 }
 
-/* Стиль для іконки серця всередині */
+/* Розмір сердечка */
 .heart-icon {
     font-size: 16px;
-    line-height: 1;
 }
 
 /* --- АДАПТИВНІСТЬ --- */

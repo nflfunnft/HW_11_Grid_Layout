@@ -345,34 +345,34 @@
     </main>
 
     <script>
-      // Нова логіка через mcounter.io (більш стабільний)
-      const API_URL = "https://api.mcounter.io/v1/counter";
-      const PROJECT_KEY = "beetroot_grid_hw_2024";
-
-      document.querySelectorAll('.like-btn').forEach(btn => {
+    document.querySelectorAll('.like-btn').forEach(btn => {
         const id = btn.getAttribute('data-id');
         const countElement = btn.querySelector('.like-count');
-        const fullKey = `${PROJECT_KEY}_${id}`;
 
-        // Завантаження поточних значень
-        fetch(`${API_URL}/${fullKey}`)
-          .then(res => res.json())
-          .then(data => {
-            if(data && data.count) countElement.innerText = data.count;
-          })
-          .catch(() => { countElement.innerText = 0; });
+        // Перевіряємо, чи є вже збережене число для цього фото
+        let currentLikes = localStorage.getItem(id);
 
-        // Обробка кліку
-        btn.onclick = () => {
-          fetch(`${API_URL}/${fullKey}/increment`, { method: 'POST' })
-            .then(res => res.json())
-            .then(data => {
-              countElement.innerText = data.count;
-              btn.querySelector('.heart-icon').innerText = "❤️";
-              btn.style.pointerEvents = "none"; // Блокуємо повторний клік
-            });
+        // Якщо ми вперше відкриваємо сайт, створюємо випадкове число лайків
+        if (!currentLikes) {
+        currentLikes = Math.floor(Math.random() * 50) + 10; // від 10 до 60
+        localStorage.setItem(id, currentLikes);
+        }
+
+        countElement.innerText = currentLikes;
+
+        btn.onclick = function() {
+        // Якщо кнопка вже була натиснута в цій сесії
+        if (this.classList.contains('active')) return;
+
+        currentLikes++;
+        localStorage.setItem(id, currentLikes);
+        countElement.innerText = currentLikes;
+
+        this.querySelector('.heart-icon').innerText = "❤️";
+        this.classList.add('active');
+        this.style.pointerEvents = "none"; 
         };
-      });
+    });
     </script>
     
 </body>
