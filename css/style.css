@@ -40,7 +40,7 @@ body {
     width: 100%;
 }
 
-/* 3. Сітка галереї */
+/* Сітка галереї */
 .gallery {
     display: grid;
     grid-template-columns: repeat(3, 370px);
@@ -63,7 +63,7 @@ body {
     grid-row: span 2;
 }
 
-/* 4. Фото та ефекти */
+/* Фото та ефекти */
 .gal__img {
     width: 100%;
     height: 100%;
@@ -80,7 +80,7 @@ body {
     transform: scale(1.03);
 }
 
-/* 5. Контейнери кнопок (позиціонування) */
+/* Контейнери кнопок (позиціонування) */
 .gal__item .like-container {
     position: absolute;
     top: 15px;
@@ -115,11 +115,9 @@ a.download-btn.download-btn {
     display: flex;
     align-items: center;
     gap: 8px;
-    /* Оптимальний відступ */
     background: #ffffff81;
     border: 1px solid #ccccccc9;
     padding: 6px 12px;
-    /* Зручний розмір */
     border-radius: 8px;
     cursor: pointer;
     font-family: inherit;
